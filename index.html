@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sahil Shirke | Tech Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        overflow-x: hidden;
+        color: #fff;
+        background: #020617;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+      }
+
+      body::before {
+        background-image: linear-gradient(
+          120deg,
+          rgba(56, 189, 248, 0.15) 1px,
+          transparent 1px
+        );
+        background-size: 50px 50px;
+        animation: gridMove 20s linear infinite;
+      }
+
+      body::after {
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(56, 189, 248, 0.18),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(56, 189, 248, 0.15),
+            transparent 45%
+          );
+        animation: floatGlow 8s ease-in-out infinite alternate;
+      }
+
+      @keyframes gridMove {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: -600px 600px;
+        }
+      }
+
+      @keyframes floatGlow {
+        from {
+          transform: translateY(-20px);
+        }
+        to {
+          transform: translateY(20px);
+        }
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+      }
+
+      .menu {
+        width: 18%;
+        padding: 25px;
+        background: rgba(2, 6, 23, 0.9);
+        backdrop-filter: blur(10px);
+        border-right: 1px solid rgba(56, 189, 248, 0.4);
+      }
+
+      .menu h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #38bdf8;
+        letter-spacing: 3px;
+      }
+
+      .menu button {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        background: transparent;
+        border: 1px solid #38bdf8;
+        color: #38bdf8;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .menu button:hover {
+        background: #38bdf8;
+        color: #000;
+        box-shadow: 0 0 20px #38bdf8;
+      }
+
+      .center {
+        width: 32%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile {
+        text-align: center;
+      }
+
+      .profile img {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        border: 4px solid #38bdf8;
+        object-fit: cover;
+        box-shadow: 0 0 40px rgba(56, 189, 248, 0.7);
+        animation: pulse 3s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 20px #38bdf8;
+        }
+        50% {
+          box-shadow: 0 0 50px #38bdf8;
+        }
+        100% {
+          box-shadow: 0 0 20px #38bdf8;
+        }
+      }
+
+      .profile h1 {
+        margin-top: 15px;
+      }
+
+      .profile p {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      .content {
+        width: 50%;
+        padding: 30px;
+      }
+
+      .box {
+        background: rgba(2, 6, 23, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        border-radius: 18px;
+        min-height: 380px;
+        border: 1px solid rgba(56, 189, 248, 0.35);
+      }
+
+      h3 {
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      ul {
+        margin-left: 18px;
+      }
+
+      li {
+        margin: 10px 0;
+        line-height: 1.6;
+      }
+
+      a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+
+      /* ✅ Hover Effect */
+      a:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 900px) {
+        body {
+          overflow-y: auto;
+        }
+        .container {
+          flex-direction: column;
+        }
+
+        .menu {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          border-right: none;
+          border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .menu h2 {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        .menu button {
+          width: 45%;
+          margin: 6px;
+        }
+
+        .center {
+          width: 100%;
+          margin: 20px 0;
+        }
+
+        .content {
+          width: 100%;
+          padding: 20px;
+        }
+
+        .profile img {
+          width: 180px;
+          height: 180px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="menu">
+        <h2>SAHIL</h2>
+        <button onclick="about()">About</button>
+        <button onclick="education()">Education</button>
+        <button onclick="skills()">Skills</button>
+        <button onclick="projects()">Projects</button>
+        <button onclick="research()">Research</button>
+        <button onclick="internship()">Internship</button>
+        <button onclick="contact()">Contact</button>
+      </div>
+
+      <div class="center">
+        <div class="profile">
+          <img src="mypic.jpeg" />
+          <h1>Sahil Shirke</h1>
+          <p>Java | Spring Boot | Full Stack Developer</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="box" id="box">
+          <h3>Welcome to My Portfolio 👨‍💻</h3>
+          <p>
+            Crafting efficient, scalable, and impactful software solutions
+            through code.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const box = document.getElementById("box");
+
+      function about() {
+        box.innerHTML = `
+<h3>About Me</h3>
+<p>Hello, I'm <b>Sahil Shirke</b>, having successfully completed my 
+<b>Master’s degree from Shivaji University, Kolhapur</b>.</p>
+
+<br>
+
+<p>I am passionate about <b>software development</b>, particularly in 
+<b>Java and Full Stack Development</b>, and have built a strong foundation in 
+<b>Core Java, OOP, JDBC, MySQL, HTML, CSS, and JavaScript</b>.</p>
+
+<br>
+
+<p>During my academic projects, I applied my skills to real-world scenarios such as creating a 
+<b>Student Result Management System</b> and an 
+<b>Eye Disease Detection System (AI + ML)</b>.</p>
+
+<br>
+
+<p>I have also built projects like a 
+<b>Multi-Channel OTP Verification System</b> and an 
+<b>Email Spam Detection System</b>.</p>
+`;
+      }
+
+      function education() {
+        box.innerHTML = `
+<h3>Education</h3>
+<ul>
+<li>MSc Computer Science – Shivaji University, Kolhapur (2025)</li>
+<li>BCS – Sangola Mahavidyalaya, Sangola (2023)</li>
+</ul>`;
+      }
+
+      function skills() {
+        box.innerHTML = `
+<h3>Skills</h3>
+<ul>
+<li>Java, HTML, CSS, JavaScript</li>
+<li>Spring Boot, Hibernate, JDBC</li>
+<li>MySQL, REST APIs</li>
+<li>Postman, Bootstrap</li>
+<li>AI, ML, Blockchain (Basics)</li>
+</ul>`;
+      }
+
+      function projects() {
+        box.innerHTML = `
+<h3>Projects</h3>
+
+<ul>
+
+<li>
+<b>FRAMZ – Spring Boot Attendance System</b><br>
+<a href="https://drive.google.com/file/d/1sJ8Phz7XhSpPsTj67n1HIbdXrFQwV_fw/view" target="_blank">
+📄 View Project PDF
+</a>
+</li>
+
+<li>
+<b>Eye Disease Detection System</b><br>
+<a href="https://drive.google.com/file/d/1u6OdrkoIsGzjw9OxmDDGDh6H7V-ipiKj/view" target="_blank">
+📄 View Project PDF
+</a>
+</li>
+
+<li>
+<b>Email Spam Detection</b><br>
+<a href="https://drive.google.com/file/d/14Sim8sMLLiLOsv6GOLvIZ9ZtwDAOHDzv/view" target="_blank">
+📄 View Project PDF
+</a>
+</li>
+
+<li>
+<b>Student Result Management System</b><br>
+<span style="color:#94a3b8; font-size:14px;">
+Java-based academic application
+</span>
+</li>
+
+</ul>
+`;
+      }
+
+      function research() {
+        box.innerHTML = `
+<h3>Research</h3>
+
+<p><b>Research Paper:</b><br>
+<a href="https://www.irjmets.com/uploadedfiles/paper//issue_4_april_2025/72872/final/fin_irjmets1745318678.pdf" target="_blank">
+📄 Eye Disease Detection Using ML – IRJMETS
+</a></p>
+
+<br>
+
+<p><b>Research Certificate:</b><br>
+<a href="https://drive.google.com/file/d/1QpR4xP3Yxs6V272LGdHIOgd03QIRermB/view" target="_blank">
+🏆 View Research Certificate
+</a></p>
+`;
+      }
+
+      function internship() {
+        box.innerHTML = `
+<h3>Internship</h3>
+
+<p><b>Java Internship Completion Certificate</b></p>
+
+<br>
+
+<p>
+Completed a professional internship where I gained practical exposure to
+Java development and real-world software development practices.
+</p>
+
+<br>
+
+<a href="https://drive.google.com/file/d/1ZfuxK8bX69VsyW-HfuT_kHiqMlE6TRV-/view?usp=drive_link" target="_blank">
+🏆 View Internship Certificate
+</a>
+`;
+      }
+
+      function contact() {
+        box.innerHTML = `
+<h3>Contact</h3>
+
+<div style="
+display:flex;
+gap:20px;
+align-items:center;
+margin-top:10px;
+">
+
+<!-- Email -->
+<a href="mailto:sahilshirke841@gmail.com" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+width="40" title="Send Email">
+</a>
+
+<!-- LinkedIn -->
+<a href="https://www.linkedin.com/in/sahil-shirke-1416b2398" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
+width="40" title="LinkedIn Profile">
+</a>
+
+<!-- GitHub -->
+<a href="https://github.com/sahil-techx" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png"
+width="40" title="GitHub Profile">
+</a>
+
+<!-- Resume -->
+<a href="https://drive.google.com/file/d/1hEf2QEAVHvqXKFbV9TFdIVS1TVqH_i5V/view?usp=drive_link" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+width="40" title="Download Resume">
+</a>
+
+</div>
+`;
+      }
+      window.onload = about;
+    </script>
+  </body>
+</html>
